@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>exo 2</title>
+    <style>
+        p {
+            display: inline;
+        }
+    </style>
 </head>
 <body>
-
+    <p>Ce texte est normal,</p>
+    <p onmouseover="this.style.color='purple'" onclick="this.style.color='navy'" ondblclick="this.style.color='lime'" > mais on peut interagir ici </p>
+    <p>et pas là</p>
+    <br><br>
+    <p style="display: block; width: 500px" ondblclick="this.style.textAlign='center'; this.style.position='absolute'; this.style.left='50%'; this.style.width='5px'" onmouseover="this.style.display= 'block'; this.style.width= '500px';this.style.textAlign='left'; this.style.position='none'; this.style.left='0';">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula tellus vitae justo sodales, malesuada auctor justo fermentum. Proin felis nulla, facilisis eu turpis iaculis, tempor lobortis tellus. Aliquam nisi quam, convallis ut quam eu, ultricies euismod sapien. Vivamus scelerisque, nibh ultrices tempor tincidunt, nibh purus accumsan felis, quis efficitur quam ante id enim. Mauris ut nunc nibh. Maecenas venenatis hendrerit arcu a blandit. Vestibulum tristique nec nisi vitae suscipit.</p>
 </body>
 </html>
