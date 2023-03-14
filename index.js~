@@ -1,0 +1,17 @@
+var activituInput = document.getElementById("autre_activite");
+var selectElement = document.createElement("select");
+
+
+var activityList = document.getElementById("activité_prin");
+
+document.getElementById("sub_activity").onclick=function(){
+  if (activituInput.value !== ""){
+    var new_activty = document.createElement("option");
+    new_activty.text = activituInput.value;
+    new_activty.value = activituInput.value;
+    new_activty.selected = true;
+    activityList.add(new_activty);
+  }
+
+};
+
