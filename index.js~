@@ -15,6 +15,8 @@ document.getElementById("sub_activity").onclick=function(){
 
 //exo 2-2
 
+//a noter que les fonctions fonctionnaient a la base grace a une detection de selection de champ. Ainsi le message "correct / incorrect" s'affichait seulement sur le champ selectionné
+
 function verifInput (champ, state) {//fonction qui modifie e champs de texte en fonction du state (true = correct/false = incorrect) ==> nous permet de réduire les lignes de codes pour chaque champs
   //vérfication de présence de message d'erreur ou de message correct afin d'éviter de les dupliquer
   // > si non présent message dupliqué a chaque itération
@@ -26,15 +28,15 @@ function verifInput (champ, state) {//fonction qui modifie e champs de texte en 
   if(state){ //si l'input est correct
     champ.style.borderColor = "green"; //mettre la bordure en vert
     const correct = document.createElement("p");//créer un élément p qui sera notre texte
-    correct.textContent = "age correct"; //ajouter le texte
+    correct.textContent = "correct"; //ajouter le texte
     correct.style.color = "green"; // mettre la couleur en vert
     correct.style.margin= "0"; // mettre un margin de 0
     correct.id= "correct";//ajouter l'id correct'
     champ.insertAdjacentElement("afterend", correct);//insérer le texte après l'input
-  } else if(!state){ //si l'input est incorrect
+  } else{ //si l'input est incorrect
     champ.style.borderColor = "red"; //mettre la bordure en rouge
     const incorrect = document.createElement("p"); //créer un élément p qui sera notre texte
-    incorrect.textContent = "age incorrect"; // ajouter le texte
+    incorrect.textContent = "incorrect"; // ajouter le texte
     incorrect.style.color = "red"; //   mettre la couleur en rouge
     incorrect.style.margin= "0";// mettre un margin de 0
     incorrect.id= "incorrect";//ajouter l'id incorrect
@@ -43,27 +45,41 @@ function verifInput (champ, state) {//fonction qui modifie e champs de texte en 
 }
 
 //vérification de l'age
-document.getElementById("age").onblur=function(){ //lorsque l'input perd le focus
-  //vérfication de l'age
-  if (this.value > 0 && this.value < 150){ //vérifier que l'age est compris entre 0 et 150
-    verifInput(this, true);//On apelle la fonction verifinput avec le state true = correct
+function verifAge(){ //lorsque l'input perd le focus
+  const input = document.getElementById("age"); //récupérer l'input
+  if (input.value > 0 && input.value < 150){ //vérifier que l'age est compris entre 0 et 150
+    verifInput(input, true);//On apelle la fonction verifinput avec le state true = correct
+    return true;
   } else {
-    verifInput(this, false)//on apele la fonction verifinput avec le state false = incorrect
+    verifInput(input, false)//on apele la fonction verifinput avec le state false = incorrect
+    return false;
   }
 }
 
 //verification format email
-document.getElementById("email").onblur = function() {
+function verifEmail () {
+  const input = document.getElementById("email"); //récupérer l'input
   // Définir le format d'adresse email attendu
   var emailFormat = /^[a-zA-Z0-9._]+@alumni.univ-avignon.fr$/;
-
   // Vérifier si la valeur du champ de texte HTML correspond au format attendu
-  if (this.value.match(emailFormat)) {
-    verifInput(this,true);
+  if (input.value.match(emailFormat)) {
+    verifInput(input,true);
+    return true;
   } else {
-    verifInput(this,false);
+    verifInput(input,false);
+    return false;
   }
 }
 
+//exo 2-3
+
+document.getElementById("submit_btn").onclick=function(){
+  if (verifAge() && verifEmail()){ //si les deux fonctions de vérification retournent true
+    document.getElementById("renseignement_form").submit(); //envoyer le formulaire
+    alert("formulaire envoyé"); //afficher un message de confirmation
+  } else {
+    alert("formulaire non envoyé, veuillez correctement remplir les champs en rouges"); //sinon afficher un message d'erreur
+  }
+}
 
 
