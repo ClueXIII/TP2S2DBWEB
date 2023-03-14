@@ -52,6 +52,7 @@ function verifAge(){ //lorsque l'input perd le focus
     return true;
   } else {
     verifInput(input, false)//on apele la fonction verifinput avec le state false = incorrect
+    alert("L'age doit être compris entre 0 et 150");
     return false;
   }
 }
@@ -67,13 +68,15 @@ function verifEmail () {
     return true;
   } else {
     verifInput(input,false);
+    alert("L'adresse email doit être de la forme : x.x@alumni.univ-avignon.fr");
     return false;
   }
 }
 
 //exo 2-3
+//lors de la vérification de la validitée des champs, la fonction verif age renvoie deux alertes.
 
-document.getElementById("submit_btn").onclick=function(){
+function submit(){
   if (verifAge() && verifEmail()){ //si les deux fonctions de vérification retournent true
     document.getElementById("renseignement_form").submit(); //envoyer le formulaire
     alert("formulaire envoyé"); //afficher un message de confirmation
@@ -84,4 +87,19 @@ document.getElementById("submit_btn").onclick=function(){
   }
 }
 
+document.getElementById("submit_btn").addEventListener('click', function(event) {
+    submit(); // Soumettre le formulaire
+});
 
+//exo 2-4
+
+// Récupérer tous les champs de texte du formulaire
+var textFields = document.querySelectorAll('input[type="text"]');
+for (var i = 0; i < textFields.length; i++) {// Ajouter un gestionnaire d'événements keydown à chaque champ de texte
+  textFields[i].addEventListener('keydown', function(event) {
+    if (event.keyCode === 13) {    // Vérifier si la touche appuyée est la touche Entrée
+      submit(); // Soumettre le formulaire
+      event.preventDefault(); // Empêcher le comportement par défaut de la touche Entrée
+    }
+  });
+}

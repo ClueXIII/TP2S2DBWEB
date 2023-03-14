@@ -8,9 +8,12 @@
   <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
 </head>
 <body>
-<footer class="w3-theme-d4" ><h1 class="w3-center" style="margin: 0">Bienvenue sur la page de renseignement</h1></footer>
-<div class="w3-card-2 w3-padding-large w3-margin w3-text-theme">
-  <form id="renseignement_form" action="" method="get">
+<button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-theme w3-round-large w3-margin">ouvrir page de contact</button>
+<div id="id01" class="w3-white w3-modal w3-text-theme" style="margin: 0; padding: 0;">
+  <div class="w3-theme-d4 w3-padding" ><h1 class="w3-center" style="margin: 0">Bienvenue sur la page de renseignement</h1>
+    <span onclick="document.getElementById('id01').style.display='none'" class="w3-padding-large w3-display-topright">Quitter</span>
+  </div>
+  <form id="renseignement_form" class="w3-padding-large" action="" method="get">
     <label>Prenom </label><br/><input onclick="this.placeholder=''" class ="w3-row-padding w3-input" type="text" name="prenom" placeholder="votre nom" /><br/>
     <label>Nom </label><br/><input onclick="this.placeholder=''" class ="w3-row-padding w3-input" type="text" name="nom" placeholder="votre prénom" /><br/>
     <label>Âge </label><br/><input id="age" onclick="this.placeholder=''" class ="w3-row-padding w3-input" type="text" name="age" placeholder="votre âge"/><br/>
@@ -38,7 +41,7 @@
     </SELECT>
     <br>
     <label>Autre ? précisez : </label><input onclick="this.placeholder=''" class ="w3-row-padding" id="autre_activite" type="text" name="autre_activite" placeholder="entrez l'activité" />
-    <input id="sub_activity" class="w3-btn w3-theme" type="button" value="ajouter l'activité">
+    <input id="sub_activity" class="w3-btn w3-theme w3-round-large" type="button" value="ajouter l'activité">
     <br/><br/>
     <label>Transport pour se rendre au stage </label><br/>
     <SELECT name="transport" size="5"  class="w3-input" style="overflow-y: auto;">
@@ -49,8 +52,8 @@
       <OPTION value="autre">Autre</OPTION>
     </SELECT> <br/><br/>
     <label>Autres informations </label><br/><textarea class="w3-input" name="informations" rows="3"></textarea><br/><br/>
-    <input id="submit_btn" class="w3-btn w3-theme" type="button" value="Envoyer le formulaire">
-    <input class="w3-btn w3-theme" type="reset" value="Recommencer">
+    <input id="submit_btn" class="w3-btn w3-theme w3-round-large" type="button" value="Envoyer le formulaire">
+    <input class="w3-btn w3-theme w3-round-large" type="reset" value="Recommencer">
   </form>
 </div>
 <script src="../index.js"></script>
